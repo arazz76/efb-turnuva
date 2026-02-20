@@ -1,0 +1,27 @@
+<!doctype html><html lang="tr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Gol Krallığı • SahLiga</title><link rel="stylesheet" href="style.css"/>
+</head><body>
+<header class="top"><div class="container topbar">
+<a class="brand" href="./"><span class="logoDot"></span> SahLiga</a>
+<nav class="nav">
+<a href="./">Anasayfa</a><a href="./puan.html">Puan Durumu</a>
+<a href="./fikstur.html">Fikstür</a><a class="active" href="./gol.html">Gol Krallığı</a><a href="./turnuva.html">Turnuva</a>
+</nav>
+<button class="searchBtn" id="openSearch">Ara… <kbd>⌘</kbd><kbd>K</kbd></button>
+</div></header>
+
+<main class="container">
+  <div class="card">
+    <div class="cardHead"><h2>Gol Krallığı</h2><span class="muted" id="updatedPill4">—</span></div>
+    <div id="scorersFull" class="muted">Yükleniyor…</div>
+  </div>
+</main>
+
+<div class="modal" id="searchModal" aria-hidden="true"><div class="modalBox">
+<input id="searchInput" placeholder="Ara…"/><div class="muted" style="margin-top:8px">ESC: kapat</div>
+<div id="searchResults" class="results"></div>
+</div></div>
+
+<script src="app.js"></script><script src="search.js"></script>
+</body></html>
