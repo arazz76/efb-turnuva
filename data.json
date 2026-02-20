@@ -39,17 +39,10 @@
     { "player": "Arda", "teamId": "T1", "goals": 2 },
     { "player": "Kenan", "teamId": "T2", "goals": 1 }
   ],
-  "bracket": [
-    {
-      "id": "B1",
-      "stage": "QF",
-      "matchNo": 1,
-      "homeId": "T1",
-      "awayId": "T4",
-      "status": "scheduled",
-      "homeScore": null,
-      "awayScore": null,
-      "winnerToMatchNo": 5
-    }
-  ]
+"bracket": [
+  { "id":"B1", "stage":"R16", "matchNo":1, "homeId":"T1", "awayId":"T2", "status":"played", "homeScore":2, "awayScore":1 },
+  { "id":"B2", "stage":"R16", "matchNo":2, "homeId":"T3", "awayId":"T4", "status":"scheduled", "homeScore":null, "awayScore":null },
+
+  { "id":"B5", "stage":"QF",  "matchNo":5, "homeId":null, "awayId":null, "status":"scheduled", "homeScore":null, "awayScore":null }
+]
 }
