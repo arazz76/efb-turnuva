@@ -36,7 +36,8 @@ function renderStandings(targetId, rows, limit=null){
   <table>
     <thead>
       <tr>
-        <th>#</th><th>Takım</th><th>O</th><th>G</th><th>B</th><th>M</th><th>AV</th><th>P</th>
+        <th>#</th><th>Takım</th><th>O</th><th>G</th><th>B</th><th>M</th>
+        <th>A</th><th>Y</th><th>AV</th><th>P</th>
       </tr>
     </thead>
     <tbody>
@@ -45,7 +46,7 @@ function renderStandings(targetId, rows, limit=null){
           <td>${i+1}</td>
           <td>${r.team}</td>
           <td>${r.o}</td><td>${r.g}</td><td>${r.b}</td><td>${r.m}</td>
-          <td>${r.av}</td>
+          <td>${r.a}</td><td>${r.y}</td><td>${r.av}</td>
           <td><span class="badge">${r.p}</span></td>
         </tr>
       `).join("")}
