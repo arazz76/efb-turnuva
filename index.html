@@ -1,43 +1,89 @@
 <!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>eFootball Turnuva Merkezi</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SahLiga</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header class="wrap">
-    <h1>eFootball Turnuva Merkezi</h1>
-    <nav>
-      <a href="#puan">Puan Durumu</a>
-      <a href="#fikstur">Fikstür</a>
-      <a href="#gol">Gol Krallığı</a>
-    </nav>
+  <header class="top">
+    <div class="container topbar">
+      <a class="brand" href="./"><span class="logoDot"></span> SahLiga</a>
+
+      <nav class="nav">
+        <a class="active" href="./">Anasayfa</a>
+        <a href="./puan.html">Puan Durumu</a>
+        <a href="./fikstur.html">Fikstür</a>
+        <a href="./gol.html">Gol Krallığı</a>
+        <a href="./turnuva.html">Turnuva</a>
+      </nav>
+
+      <button class="searchBtn" id="openSearch">Ara… <kbd>⌘</kbd><kbd>K</kbd></button>
+    </div>
   </header>
 
-  <main class="wrap">
-    <section class="card" id="puan">
-      <h2>Puan Durumu</h2>
-      <div class="muted">Google Sheets bağlayınca otomatik dolacak.</div>
-      <div id="standings"></div>
+  <main class="container">
+    <section class="hero">
+      <div class="heroBox">
+        <div class="chip">SEZON • 2026</div>
+        <h1>Turnuva Merkezi</h1>
+        <p>Fikstür, puan durumu, gol krallığı ve sonuçlar tek yerde. Yönetim paneli: Google Sheets.</p>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+          <span class="pill" id="modePill">Mod: Demo</span>
+          <span class="pill" id="updatedPill">Güncelleme: —</span>
+        </div>
+      </div>
+
+      <div class="heroBox">
+        <div class="muted">Sıradaki maç</div>
+        <div id="nextMatch" class="big">Yükleniyor…</div>
+        <hr/>
+        <div class="muted">Son skor</div>
+        <div id="lastResult" class="big">Yükleniyor…</div>
+      </div>
     </section>
 
-    <section class="card" id="fikstur">
-      <h2>Fikstür</h2>
-      <div id="fixtures"></div>
-    </section>
+    <section class="grid">
+      <div class="card">
+        <div class="cardHead">
+          <h2>Puan Durumu</h2>
+          <a href="./puan.html">Tümü →</a>
+        </div>
+        <div id="standingsMini" class="muted">Yükleniyor…</div>
+      </div>
 
-    <section class="card" id="gol">
-      <h2>Gol Krallığı</h2>
-      <div id="scorers"></div>
+      <div class="card">
+        <div class="cardHead">
+          <h2>Fikstür</h2>
+          <a href="./fikstur.html">Tümü →</a>
+        </div>
+        <div id="fixturesMini" class="muted">Yükleniyor…</div>
+      </div>
+
+      <div class="card">
+        <div class="cardHead">
+          <h2>Gol Krallığı</h2>
+          <a href="./gol.html">Tümü →</a>
+        </div>
+        <div id="scorersMini" class="muted">Yükleniyor…</div>
+      </div>
     </section>
   </main>
 
-  <footer class="wrap muted">
-    © <span id="year"></span> Turnuva
+  <footer class="footer container">
+    <div>© <span id="year"></span> SahLiga • Powered by GitHub Pages + Google Sheets</div>
   </footer>
 
+  <div class="modal" id="searchModal" aria-hidden="true">
+    <div class="modalBox">
+      <input id="searchInput" placeholder="Takım, oyuncu, maç ara… (örn: Iğdır / Arda / Hafta 2)" />
+      <div class="muted" style="margin-top:8px">Enter: aç • ESC: kapat</div>
+      <div id="searchResults" class="results"></div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script src="search.js"></script>
 </body>
 </html>
