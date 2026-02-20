@@ -69,6 +69,59 @@ function renderStandings(targetId, rows, limit=null){
   if ($(targetId)) $(targetId).innerHTML = html;
 }
 
+function renderBracket(targetId, bracket, teamById){
+  if (!$(targetId)) return;
+
+  if (!bracket || bracket.length === 0){
+    $(targetId).innerHTML = `<div class="muted">Braket verisi yok.</div>`;
+    return;
+  }
+
+  // stage sırası (istersen değiştir)
+  const order = { R128:1, R64:2, R32:3, R16:4, QF:5, SF:6, F:7, FINAL:7, "3RD":8 };
+  const stageKey = (sname) => order[String(sname||"").toUpperCase()] ?? 999;
+
+  const grouped = bracket.reduce((acc, m) => {
+    const st = String(m.stage || "ROUND").toUpperCase();
+    (acc[st] ||= []).push(m);
+    return acc;
+  }, {});
+
+  const stages = Object.keys(grouped).sort((a,b)=>stageKey(a)-stageKey(b) || a.localeCompare(b,"tr"));
+
+  const html = stages.map(stage => {
+    const list = grouped[stage].slice().sort((a,b)=>(Number(a.matchNo)-Number(b.matchNo)));
+
+    const items = list.map(m => {
+      const home = m.homeId ? (teamById[m.homeId]?.name || m.homeId) : "—";
+      const away = m.awayId ? (teamById[m.awayId]?.name || m.awayId) : "—";
+      const score = (m.status === "played") ? `${m.homeScore}-${m.awayScore}` : "-";
+      const when = m.date ? String(m.date) : "";
+
+      return `
+        <div class="matchRow">
+          <div>
+            <div class="w">${stage}</div>
+            <div class="w">Maç ${m.matchNo ?? ""}</div>
+            ${when ? `<div class="w">${when}</div>` : ""}
+          </div>
+          <div class="t">${home} <span class="muted">vs</span> ${away}</div>
+          <div class="s">${score}</div>
+        </div>
+      `;
+    }).join("");
+
+    return `
+      <div style="margin-top:10px">
+        <span class="pill">${stage}</span>
+        <div class="list" style="margin-top:8px">${items}</div>
+      </div>
+    `;
+  }).join("");
+
+  $(targetId).innerHTML = html;
+}
+
 function renderFixtures(targetId, matches, teamById, limit=null){
   const list = matches.slice().sort((a,b)=>(a.round-b.round)||s(a.date).localeCompare(s(b.date)));
   const slice = limit ? list.slice(0, limit) : list;
@@ -126,8 +179,10 @@ async function init(){
     const teams = data.teams || [];
     const matches = data.matches || [];
     const scorers = data.scorers || [];
+    const bracket = data.bracket || [];
 
     const teamById = Object.fromEntries(teams.map(t=>[t.id, t]));
+    renderBracket("bracket", bracket, teamById);
     const standings = computeStandings(teams, matches);
 
     // meta
