@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>eFootball Turnuva Merkezi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>eFootball Turnuva Merkezi</h1>
+    <nav>
+      <a href="#puan">Puan Durumu</a>
+      <a href="#fikstur">Fikstür</a>
+      <a href="#gol">Gol Krallığı</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card" id="puan">
+      <h2>Puan Durumu</h2>
+      <div class="muted">Google Sheets bağlayınca otomatik dolacak.</div>
+      <div id="standings"></div>
+    </section>
+
+    <section class="card" id="fikstur">
+      <h2>Fikstür</h2>
+      <div id="fixtures"></div>
+    </section>
+
+    <section class="card" id="gol">
+      <h2>Gol Krallığı</h2>
+      <div id="scorers"></div>
+    </section>
+  </main>
+
+  <footer class="wrap muted">
+    © <span id="year"></span> Turnuva
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
