@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "name": "eFootball Turnuvası",
+    "mode": "league",
+    "season": "2026",
+    "updatedAt": "2026-02-20T00:00:00+03:00"
+  },
+  "teams": [
+    { "id": "T1", "name": "Takım 1" },
+    { "id": "T2", "name": "Takım 2" },
+    { "id": "T3", "name": "Takım 3" },
+    { "id": "T4", "name": "Takım 4" }
+  ],
+  "matches": [
+    {
+      "id": "M1",
+      "stage": "league",
+      "round": 1,
+      "date": "2026-02-21 21:00",
+      "homeId": "T1",
+      "awayId": "T2",
+      "status": "played",
+      "homeScore": 2,
+      "awayScore": 1
+    },
+    {
+      "id": "M2",
+      "stage": "league",
+      "round": 1,
+      "date": "2026-02-21 21:30",
+      "homeId": "T3",
+      "awayId": "T4",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null
+    }
+  ],
+  "scorers": [
+    { "player": "Arda", "teamId": "T1", "goals": 2 },
+    { "player": "Kenan", "teamId": "T2", "goals": 1 }
+  ],
+  "bracket": [
+    {
+      "id": "B1",
+      "stage": "QF",
+      "matchNo": 1,
+      "homeId": "T1",
+      "awayId": "T4",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "winnerToMatchNo": 5
+    }
+  ]
+}
